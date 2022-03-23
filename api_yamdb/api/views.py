@@ -1,34 +1,28 @@
+import json
+
 from django.db.models import Avg
-from rest_framework import viewsets, status
-from rest_framework.exceptions import NotAuthenticated
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework.filters import SearchFilter
-from rest_framework.permissions import AllowAny
 from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import status, viewsets
+from rest_framework.exceptions import NotAuthenticated
+from rest_framework.filters import SearchFilter
+from rest_framework.permissions import AllowAny
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from reviews.models import Category, Genre, Review, Title
+from users.confirmation import code_generator
+from users.models import User
+from users.permissions import AdminPermission, ContentModificationPermission
+from users.serializers import (AdminSerializer, TokenSerializer,
+                               UserSerializer, UserSignupSerializer)
+from users.token_generator import get_tokens_for_user
 
 from .filters import TitleFilter
 from .mixins import CreateListDestroyModelViewSet
-from .serializers import (
-    TitleReadSerializer,
-    TitleWriteSerializer,
-    CategorySerializer,
-    GenreSerializer,
-    ReviewSerializer,
-    CommentSerializer
-)
 from .permissions import ReadOnly
-
-from reviews.models import Title, Category, Genre, Review
-from users.serializers import UserSignupSerializer, \
-    TokenSerializer, UserSerializer, AdminSerializer
-
-from users.models import User
-from users.confirmation import code_generator
-from users.token_generator import get_tokens_for_user
-from users.permissions import AdminPermission, ContentModificationPermission
-import json
+from .serializers import (CategorySerializer, CommentSerializer,
+                          GenreSerializer, ReviewSerializer,
+                          TitleReadSerializer, TitleWriteSerializer)
 
 
 class TitleViewSet(viewsets.ModelViewSet):
@@ -126,9 +120,8 @@ class AuthTokenViewClass(APIView):
             User,
             username=serializer.validated_data.get('username')
         )
-        if user.confirmation_code \
-                == serializer.data.get('confirmation_code') \
-                and user.confirmation_code != 0:
+        if (user.confirmation_code == serializer.data.get('confirmation_code')
+                and user.confirmation_code != 0):
             user.confirmation_code = 0
             user.save()
             return Response(get_tokens_for_user(user),

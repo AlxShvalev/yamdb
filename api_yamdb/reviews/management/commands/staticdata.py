@@ -1,10 +1,8 @@
 import django.db.utils
 import pandas as pd
-from reviews.models import Category, Title, Genre, Review, GenreTitle, Comment
-from users.models import User
-
 from django.core.management.base import BaseCommand
-
+from reviews.models import Category, Comment, Genre, Review, Title
+from users.models import User
 
 category = pd.read_csv('static/data/category.csv')
 titles = pd.read_csv('static/data/titles.csv')
@@ -62,23 +60,6 @@ def titles_create(genre):
         )
     try:
         Genre.objects.bulk_create(list_genre)
-    except django.db.utils.IntegrityError as e:
-        print(f'{e} Тестовая база уже была загружена. '
-              f'Данная команда выполняется на чистую базу')
-
-
-def genre_title_create(genre_title):
-    list_genre_title = []
-    for i in range(len(genre_title)):
-        list_genre_title.append(
-            GenreTitle(
-                id=genre_title['id'][i],
-                title=Title.objects.get(pk=genre_title['title_id'][i]),
-                genre=Genre.objects.get(pk=genre_title['genre_id'][i]),
-            )
-        )
-    try:
-        GenreTitle.objects.bulk_create(list_genre_title)
     except django.db.utils.IntegrityError as e:
         print(f'{e} Тестовая база уже была загружена. '
               f'Данная команда выполняется на чистую базу')
@@ -149,7 +130,6 @@ trigger = [
     category_create,
     genre_create,
     titles_create,
-    genre_title_create,
     users_create,
     review_create,
     comment_create,

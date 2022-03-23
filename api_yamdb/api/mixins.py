@@ -1,7 +1,7 @@
-from users.permissions import AdminPermission
-from .permissions import ReadOnly
-
 from rest_framework import mixins, viewsets
+from users.permissions import AdminPermission
+
+from .permissions import ReadOnly
 
 
 class CreateListDestroyModelViewSet(
