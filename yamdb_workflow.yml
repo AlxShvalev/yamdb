@@ -56,7 +56,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
-          passphrase: ${{ secrets.PASSPH }}
+          passphrase: ${{ secrets.PASSPHRASE }}
           script: |
             sudo docker pull organizzzzm/api_yamdb
             #остановка всех контейнеров
