@@ -10,4 +10,4 @@ class CreateListDestroyModelViewSet(
     mixins.DestroyModelMixin,
     viewsets.GenericViewSet
 ):
-    permission_classes = (AdminPermission | ReadOnly,)
+    permission_classes = (AdminPermission or ReadOnly,)
