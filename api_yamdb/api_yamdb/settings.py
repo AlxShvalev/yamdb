@@ -122,7 +122,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/'
-STATICFILES_DIRS = ('staticdata',)
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'staticdata'))
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Email
