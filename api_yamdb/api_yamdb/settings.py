@@ -10,7 +10,12 @@ SECRET_KEY = 'p&l%385148kslhtyn^##a1)ilz@4zqj=rq&agdol^##zgl9(vs'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'web',
+    '178.154.223.1',
+    '::1'
+]
 
 
 # Application definition
@@ -117,7 +122,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/'
-STATICFILES_URLS = ('staticdata',)
+STATICFILES_DIRS = ('staticdata',)
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Email
