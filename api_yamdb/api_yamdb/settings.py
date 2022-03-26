@@ -12,7 +12,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
-    'web:8000',
+    'web',
     '178.154.223.1',
     '::1',
     'localhost',
