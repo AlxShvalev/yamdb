@@ -119,7 +119,7 @@ AUTH_USER_MODEL = 'users.User'
 # Static files (CSS, JavaScript, Images)
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'api_yamdb/staticdata',))
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'api_yamdb/staticdata'),)
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/'
