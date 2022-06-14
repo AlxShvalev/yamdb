@@ -84,7 +84,7 @@ GNU GPLv3
 ![workflow](https://github.com/AlxShvalev/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)
 
 ### Автор
-Алексей Швалёв - студент Я.Практикум
+Александр Боровцов, Алексей Швалёв, Александр Шпаковский
 
 ### IP-address
 178.154.223.1
