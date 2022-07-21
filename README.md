@@ -80,8 +80,5 @@ docker-compose exec web python manage.py loaddata fixtures.json
 ## Лицензия
 GNU GPLv3
 
-## Статус
-![workflow](https://github.com/AlxShvalev/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)
-
 ### Авторы
 Александр Боровцов, Алексей Швалёв, Александр Шпаковский
